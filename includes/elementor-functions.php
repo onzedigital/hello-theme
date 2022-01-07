@@ -93,6 +93,15 @@ function hello_get_header_layout_class() {
 		$layout_classes[] = 'menu-layout-dropdown';
 	}
 
+	$header_submenu_width = hello_elementor_get_setting( 'hello_header_submenu_width' );
+	if ( 'thin' === $header_submenu_width ) {
+		$layout_classes[] = 'submenu-dropdown-thin';
+	} elseif ( 'medium' === $header_submenu_width ) {
+		$layout_classes[] = 'submenu-dropdown-medium';
+	} elseif ( 'wide' === $header_submenu_width ) {
+		$layout_classes[] = 'submenu-dropdown-wide';
+	}
+
 	return implode( ' ', $layout_classes );
 }
 

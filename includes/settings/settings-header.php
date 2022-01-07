@@ -477,6 +477,54 @@ class Settings_Header extends Tab_Base {
 					'selector' => '.site-header .site-navigation .menu li',
 				]
 			);
+
+			$this->add_control(
+				'hello_header_submenu_options',
+				[
+					'label' => esc_html__( 'Submenu Options', 'hello-elementor' ),
+					'type' => \Elementor\Controls_Manager::HEADING,
+					'separator' => 'before',
+				]
+			);
+
+			$this->add_control(
+				'hello_header_submenu_color',
+				[
+					'label' => __( 'Color', 'hello-elementor' ),
+					'type' => Controls_Manager::COLOR,
+					'condition' => [
+						'hello_header_menu_display' => 'yes',
+					],
+					'selectors' => [
+						'.site-header .site-navigation ul.menu ul.sub-menu li a' => 'color: {{VALUE}};',
+					],
+				]
+			);
+
+			$this->add_group_control(
+				Group_Control_Background::get_type(),
+				[
+					'name' => 'hello_header_submenu_background',
+					'label' => __( 'Background', 'hello-elementor' ),
+					'types' => [ 'classic', 'gradient' ],
+					'selector' => '.site-header .site-navigation ul.menu ul.sub-menu',
+				]
+			);
+
+			$this->add_control(
+				'hello_header_submenu_width',
+				[
+					'type' => Controls_Manager::SELECT,
+					'label' => __( 'Sub Menu Dropdown Width', 'hello-elementor' ),
+					'options' => [
+						'thin' => __( 'Thin', 'hello-elementor' ),
+						'medium' => __( 'Medium', 'hello-elementor' ),
+						'wide' => __( 'Wide', 'hello-elementor' ),
+					],
+					'selector' => '.site-header',
+					'default' => 'thin',
+				]
+			);
 		}
 
 		$this->end_controls_section();
